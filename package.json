@@ -1,7 +1,7 @@
 {
-  "name": "css_grid",
+  "name": "IntroToWebDev",
   "version": "1.0.0",
-  "description": "CSS Grid tutorial ",
+  "description": "Intro to Web Development ",
   "main": "index.js",
   "scripts": {
     "start": "run-script-os",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adelgado0723/CSS_Grid.git"
+    "url": "git+https://github.com/adelgado0723/IntroToWebDev.git"
   },
   "keywords": [
     "CSS",
@@ -20,9 +20,9 @@
   "author": "Andy Delgado",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/adelgado0723/CSS_Grid/issues"
+    "url": "https://github.com/adelgado0723/IntroToWebDev/issues"
   },
-  "homepage": "https://github.com/adelgado0723/CSS_Grid#readme",
+  "homepage": "https://github.com/adelgado0723/IntroToWebDev#readme",
   "devDependencies": {
     "browser-sync": "^2.24.5",
     "run-script-os": "^1.0.3"
