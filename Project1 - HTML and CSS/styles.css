@@ -1,0 +1,84 @@
+/* 
+ * This makes the sizes of elements include their padding, border, and margin
+ * values. 
+ */
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 10px;
+}
+
+.story {
+  padding: 0 10px;
+  border-right: 1px black solid;
+}
+.row {
+  border-left: 1px black solid;
+  border-bottom: 5px black solid;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+.quarter {
+  width: 25%;
+}
+.half {
+  width: 50%;
+}
+.three-quarters {
+  width: 75%;
+}
+
+img {
+  width: 100%;
+}
+
+.title {
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+.header {
+  border-bottom: 5px black solid;
+  text-align: center;
+  margin: 0px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  color: white;
+}
+
+.nav-politics {
+  background-color: #bdf2ed;
+}
+.nav-tech {
+  background-color: #d99d8f;
+}
+.nav-local {
+  background-color: #f2594b;
+}
+.nav-opinion {
+  background-color: #f27d72;
+}
+.nav-sports {
+  background-color: #0d0d0d;
+}
+/* 
+.row1 > * {
+  border: 1px solid black;
+} */
