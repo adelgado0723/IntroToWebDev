@@ -37,20 +37,20 @@ section {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  border-left: 3px solid var(--green);
-  border-bottom: 3px solid var(--green);
+  border-left: 3px solid var(--gray);
+  border-bottom: 3px solid var(--gray);
   height: auto;
 }
 .display {
-  min-height: 50px;
+  min-height: 60px;
   height: auto;
   background-color: var(--gray);
-  border: 3px solid var(--green);
+  border: 3px solid var(--gray);
   border-bottom: none;
   display: flex;
 }
 .row {
-  border-top: 3px solid var(--green);
+  border-top: 3px solid var(--gray);
 
   margin: 0;
   padding: 0;
@@ -67,7 +67,7 @@ section {
   background-color: var();
 }
 .key {
-  border-right: 3px solid var(--green);
+  border-right: 3px solid var(--gray);
   border-top: none;
   border-left: none;
   border-bottom: none;
