@@ -1,31 +1,93 @@
+/* Define a color scheme */
+:root {
+  --blue: #011566;
+  --gray: #b0c6d9;
+  --dark-green: #013440;
+  --aqua: #04adbf;
+  --green: #038c7f;
+}
+
 * {
   box-sizing: border-box;
+}
+h1 {
+  color: var(--black);
+}
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+section {
+  width: 50%;
+  /* width: 400px; */
+  margin-top: 60px;
 }
 .calc {
   display: flex;
   justify-content: center;
-  width: 300px;
+  align-items: stretch;
+  width: 100%;
   flex-direction: column;
 }
 .keypad {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-left: 3px solid var(--aqua);
+  border-bottom: 3px solid var(--aqua);
+  height: auto;
 }
 .display {
-  background-color: #111;
-  width: 300px;
-  height: 25px;
+  min-height: 50px;
+  height: auto;
+  background-color: var(--gray);
+  border: 3px solid var(--aqua);
+  border-bottom: none;
+  display: flex;
 }
 .row {
+  border-top: 3px solid var(--aqua);
+
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: stretch;
+  display: flex;
+  width: 100%;
   height: 20%;
 }
 
 .key {
-  height: 20%;
+  border-right: 3px solid var(--aqua);
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  height: 100%;
   width: 25%;
   font-size: 2em;
+  text-decoration: none;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--blue);
+  color: var(--green);
+  font-family: sans-serif;
+  cursor: pointer;
+  /* text-align: center; */
+  transform: scale(1);
+}
+.key:hover {
+  transform: scale(1.1);
+  border: none;
+  background-color: var(--black);
+  align-self: center;
 }
 .key.clear {
   width: 50%;
