@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+.calc {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  flex-direction: column;
+}
+.keypad {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.display {
+  background-color: #111;
+  width: 300px;
+  height: 25px;
+}
+.row {
+  height: 20%;
+}
+
+.key {
+  height: 20%;
+  width: 25%;
+  font-size: 2em;
+}
+.key.clear {
+  width: 50%;
+}
+.key.zero {
+  width: 75%;
+}
