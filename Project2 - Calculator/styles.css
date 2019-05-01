@@ -1,5 +1,6 @@
 /* Define a color scheme */
 :root {
+  --black: #222;
   --blue: #011566;
   --gray: #b0c6d9;
   --dark-green: #013440;
@@ -21,7 +22,7 @@ body {
 }
 section {
   margin-top: 60px;
-  width: 45%;
+  width: 50%;
 }
 .calc {
   display: flex;
@@ -29,74 +30,74 @@ section {
   align-items: stretch;
   width: 100%;
   flex-direction: column;
+  background-color: var(--black);
 }
 .keypad {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: stretch;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  border-left: 3px solid var(--gray);
-  border-bottom: 3px solid var(--gray);
+  border-top: none;
   height: auto;
+}
+.hide {
+  opacity: 0;
+}
+.cursor {
+  margin-left: 3px;
 }
 .display {
   min-height: 60px;
+  padding-right: 20px;
   height: auto;
-  background-color: var(--gray);
-  border: 3px solid var(--gray);
+  background-color: var(--black);
   border-bottom: none;
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: right;
+  font-size: 2.5em;
+  color: papayawhip;
+  flex-direction: row-reverse;
 }
 .row {
-  border-top: 3px solid var(--gray);
-
   margin: 0;
   padding: 0;
   justify-content: space-between;
   align-items: stretch;
   display: flex;
   width: 100%;
-  height: 20%;
+  height: 19%;
 }
 .key.last {
-  background-color: #222;
+  background-color: var(--dark-green);
 }
-.key.last:hover {
-  background-color: var();
-}
+
 .key {
-  border-right: 3px solid var(--gray);
-  border-top: none;
-  border-left: none;
-  border-bottom: none;
+  border: none;
   height: 100%;
-  width: 25%;
+  width: 24%;
   font-size: 2em;
   text-decoration: none;
   margin: 0;
-
-  padding: 15px 0px;
+  padding: 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--blue);
-  color: var(--aqua);
+  background: var(--green);
+  color: papayawhip;
   font-family: sans-serif;
   cursor: pointer;
   text-align: center;
-  /* transform: scale(.95); */
 }
 .key:hover {
-  /* transform: scale(1); */
-  /* border: none; */
-  background-color: var(--dark-green);
-  display: block;
+  background-color: var(--blue);
 }
 .key.clear {
-  width: 50%;
+  width: 49.5%;
 }
 .key.zero {
-  width: 75%;
+  width: 74.7%;
 }
