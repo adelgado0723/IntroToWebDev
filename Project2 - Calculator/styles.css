@@ -46,7 +46,8 @@ section {
   opacity: 0;
 }
 .cursor {
-  margin-left: 3px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .display {
   min-height: 60px;
