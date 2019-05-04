@@ -1,16 +1,16 @@
 const keys = document.querySelectorAll('.row .key');
 const input = document.querySelector('.input');
 const cursor = document.querySelector('.cursor');
-const display = document.querySelector('.display');
+const calc = document.querySelector('.calc');
+
+let isDisplayingResult = true;
 let cursorBlinkInterval;
-let doneBlinking = false;
+let doneBlinking = true;
+
 const operation = {
   operandOne: undefined,
-  operandTwo: undefined,
   operator: ''
 };
-
-// operation.operandOne = 1;
 
 function blink() {
   if (!cursor.classList.contains('hide')) {
@@ -18,7 +18,6 @@ function blink() {
   } else {
     cursor.classList.remove('hide');
   }
-  //   console.log('blinking');
   if (doneBlinking) {
     clearInterval(cursorBlinkInterval);
     if (cursor.classList.contains('hide')) {
@@ -31,37 +30,74 @@ function blinkCursor() {
   cursorBlinkInterval = setInterval(blink, 540);
 }
 function executeOperation(operator) {
-  ({ operandOne: numOne, operandTwo: numTwo } = operation);
-  let result = 0;
+  let result = input.innerHTML;
+  let parsed = parseInt(result);
+  const hasNoOperand = isNaN(operation.operandOne);
+
   switch (operator) {
     case '+':
-      result = numOne + numTwo;
+      if (hasNoOperand) {
+        operation.operandOne = parsed;
+      } else {
+        operation.operandOne += parsed;
+        input.innerHTML = operation.operandOne.toString();
+      }
+      isDisplayingResult = true;
+
       break;
 
     case '-':
-      result = numOne - numTwo;
+      if (hasNoOperand) {
+        operation.operandOne = parsed;
+      } else {
+        operation.operandOne -= parsed;
+        input.innerHTML = operation.operandOne.toString();
+      }
+      isDisplayingResult = true;
       break;
 
     case '←':
       // Remove the last digit of the number in the display.
       // If the last digit is deleted, set result to zero.
-
+      input.innerHTML = result.length > 1 ? result.substr(0, result.length - 1) : '0';
       break;
 
     case 'C':
       // Clear values in operand and sets result to
       input.innerHTML = 0;
       clearOperation();
-
+      isDisplayingResult = true;
       break;
 
     case '÷':
-      result = numOne / numTwo;
+      if (hasNoOperand) {
+        operation.operandOne = parsed;
+      } else {
+        operation.operandOne /= parsed;
+        input.innerHTML = operation.operandOne.toString();
+      }
+      isDisplayingResult = true;
       break;
     // TODO: Might want to handle '/' operator for keyboard input
 
     case '×':
-      result = numOne * numTwo;
+      if (hasNoOperand) {
+        operation.operandOne = parsed;
+      } else {
+        operation.operandOne *= parsed;
+        input.innerHTML = operation.operandOne.toString();
+      }
+      isDisplayingResult = true;
+      break;
+
+    case '=':
+      if (hasNoOperand) {
+        operation.operandOne = parsed;
+      } else {
+        executeOperation(operation.operator);
+        clearOperation();
+      }
+
       break;
 
     default:
@@ -72,7 +108,6 @@ function executeOperation(operator) {
 }
 function clearOperation() {
   operation.operandOne = undefined;
-  operation.operandTwo = undefined;
   operation.operator = '';
 }
 
@@ -110,15 +145,19 @@ function evaluateOperation(key) {
   const parsedInput = parseInt(key);
   if (!isNaN(parsedInput)) {
     // key is a number
-    if (input.innerHTML === '0') {
+    if (isDisplayingResult || input.innerHTML === '0') {
       input.innerHTML = key;
+      isDisplayingResult = false;
     } else {
       input.innerHTML += key;
     }
   } else {
     // key is not a number
-    operation.operator = key;
-    executeOperation(operation.operator);
+    if (key !== '←' && key !== 'C' && key !== '=') {
+      operation.operator = key;
+    }
+    executeOperation(key);
+    console.log('OperandOne = ' + operation.operandOne);
   }
 }
 
@@ -136,12 +175,11 @@ window.addEventListener('keydown', handleKeyDown);
 
 // Blinking cursor when display has focus
 window.addEventListener('click', function(e) {
-  if (display.contains(e.target)) {
-    if (!doneBlinking) {
-      clearInterval(cursorBlinkInterval);
+  if (calc.contains(e.target)) {
+    if (doneBlinking) {
+      blinkCursor();
       doneBlinking = false;
     }
-    blinkCursor();
   } else {
     // Clicked outside the box
     doneBlinking = true;
