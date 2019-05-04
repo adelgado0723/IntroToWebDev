@@ -29,6 +29,11 @@ function blink() {
 function blinkCursor() {
     cursorBlinkInterval = setInterval(blink, 540);
 }
+
+function clearOperation() {
+    operation.operandOne = undefined;
+    operation.operator = '';
+}
 function executeOperation(operator) {
     const result = input.innerHTML;
     const parsed = parseInt(result);
@@ -101,14 +106,10 @@ function executeOperation(operator) {
             break;
 
         default:
-            console.log(`WARNING: Attempting to run invalid operation: ${operation}`);
+            console.error(`WARNING: Attempting to run invalid operation: ${operation}`);
             break;
     }
     return result;
-}
-function clearOperation() {
-    operation.operandOne = undefined;
-    operation.operator = '';
 }
 
 function isOperator(char) {
@@ -148,13 +149,11 @@ function evaluateOperation(key) {
             operation.operator = key;
         }
         executeOperation(key);
-        console.log(`OperandOne = ${operation.operandOne}`);
     }
 }
 
 function handleKeyDown(e) {
     const keyPressed = String.fromCharCode(e.keyCode);
-    console.log(keyPressed);
     // Validate input and replace operator symbols with
     // ones we are expecting.
     evaluateOperation(keyPressed);

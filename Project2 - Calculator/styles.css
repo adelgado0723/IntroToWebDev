@@ -17,12 +17,11 @@
 }
 h1 {
   color: var(--dark-green);
-  font-family: 'Righteous', cursive;
-  font-size: 4em;
+  font-family: 'Merriweather', cursive;
+  font-size: 5em;
   /* color: var(--gray); */
   color: papayawhip;
-  margin-top: 100px;
-  text-decoration: underline;
+  margin-top: 40px;
 }
 body {
   display: flex;
@@ -34,56 +33,54 @@ body {
   margin: 0;
 }
 section {
-  margin-top: 80px;
+  margin-top: 20px;
   width: 400px;
 }
 .calc {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
   width: 100%;
   flex-direction: column;
   background-color: var(--black);
   color: papayawhip;
+  margin: 0px;
+  padding: 0px;
 }
 .keypad {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  border-top: none;
-  height: auto;
+  border: none;
 }
 .hide {
   opacity: 0;
 }
 .cursor {
-  /* margin-left: 3px;*/
+  margin: 3px;
+  padding: 0px;
 }
 .display {
   min-height: 60px;
   background-color: var(--black);
   border-bottom: none;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   text-align: right;
   font-size: 2.5em;
-
   font-family: 'Roboto Mono', cursive;
   flex-direction: row-reverse;
   padding: 20px 5px;
 }
 .row {
   margin: 0;
+  margin-bottom: 0.5%;
   padding: 0;
   justify-content: space-between;
   align-items: stretch;
   display: flex;
   width: 100%;
-  height: 19%;
 }
 .key.last {
   background-color: var(--dark-green);
@@ -98,12 +95,11 @@ section {
 .key {
   border: none;
   border-radius: 0;
-  height: 100%;
-  width: 24%;
+  width: 24.5%;
   font-size: 2em;
   text-decoration: none;
   margin: 0;
-  padding: 15px 15px;
+  padding: 12px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,7 +107,6 @@ section {
   font-family: 'Roboto Mono', cursive;
   cursor: pointer;
   text-align: center;
-
   color: papayawhip;
 }
 .key:hover {
@@ -121,8 +116,8 @@ section {
   background-color: var(--green-active);
 }
 .key.clear {
-  width: 49.4%;
+  width: 49.7%;
 }
 .key.zero {
-  width: 74.7%;
+  width: 74.8%;
 }
