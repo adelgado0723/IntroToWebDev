@@ -2,12 +2,14 @@
 :root {
   --black: #222;
   --blue: #011566;
-  --gray: #b0c6d9;
+  --gray: #cdd6dd;
   --green-hover: #07b3a1;
   --dark-green: #013440;
-  --dark-green-hover: #035466;
+  --dark-green-active: #013440;
+  --dark-green-hover: #036075;
   --aqua: #04adbf;
   --green: #038c7f;
+  --green-active: #027267;
 }
 
 * {
@@ -15,20 +17,25 @@
 }
 h1 {
   color: var(--dark-green);
+  font-family: 'Righteous', cursive;
+  font-size: 4em;
+  /* color: var(--gray); */
+  color: papayawhip;
+  margin-top: 100px;
+  text-decoration: underline;
 }
 body {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-section {
-  margin-top: 60px;
-  width: 400px;
-}
-body {
+  background-color: #355c7d;
   padding: 0;
   margin: 0;
+}
+section {
+  margin-top: 80px;
+  width: 400px;
 }
 .calc {
   display: flex;
@@ -64,6 +71,8 @@ body {
   justify-content: flex-start;
   text-align: right;
   font-size: 2.5em;
+
+  font-family: 'Gugi', cursive;
   flex-direction: row-reverse;
   padding: 20px 5px;
 }
@@ -82,10 +91,13 @@ body {
 .key.last:hover {
   background-color: var(--dark-green-hover);
 }
+.key.last:active {
+  background-color: var(--dark-green-active);
+}
 
 .key {
   border: none;
-  border-radius: none;
+  border-radius: 0;
   height: 100%;
   width: 24%;
   font-size: 2em;
@@ -96,12 +108,17 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--green);
-  font-family: sans-serif;
+  font-family: 'Gugi', cursive;
   cursor: pointer;
   text-align: center;
+
+  color: papayawhip;
 }
 .key:hover {
   background-color: var(--green-hover);
+}
+.key:active {
+  background-color: var(--green-active);
 }
 .key.clear {
   width: 49.5%;
@@ -109,4 +126,3 @@ body {
 .key.zero {
   width: 74.7%;
 }
-
