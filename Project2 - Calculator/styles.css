@@ -60,7 +60,8 @@ section {
   opacity: 0;
 }
 .cursor {
-  margin-left: 3px;
+ 
+/* margin-left: 3px;*/
 }
 .display {
   min-height: 60px;
@@ -72,7 +73,7 @@ section {
   text-align: right;
   font-size: 2.5em;
 
-  font-family: 'Gugi', cursive;
+  font-family: 'Roboto Mono', cursive;
   flex-direction: row-reverse;
   padding: 20px 5px;
 }
@@ -108,7 +109,7 @@ section {
   justify-content: center;
   align-items: center;
   background: var(--green);
-  font-family: 'Roboto', cursive;
+  font-family: 'Roboto Mono', cursive;
   cursor: pointer;
   text-align: center;
 
@@ -121,7 +122,7 @@ section {
   background-color: var(--green-active);
 }
 .key.clear {
-  width: 49.5%;
+  width: 49.4%;
 }
 .key.zero {
   width: 74.7%;
