@@ -6,11 +6,8 @@ const calc = document.querySelector('.calc');
 let isDisplayingResult = true;
 let cursorBlinkInterval;
 let doneBlinking = true;
-
-const operation = {
-    operandOne: undefined,
-    operator: '',
-};
+let operand = null;
+let binaryOperator = '';
 
 function blink() {
     if (!cursor.classList.contains('hide')) {
@@ -25,91 +22,95 @@ function blink() {
         }
     }
 }
-
+function render(output) {
+    console.log(output);
+    input.innerHTML = output;
+}
 function blinkCursor() {
     cursorBlinkInterval = setInterval(blink, 540);
 }
 
 function clearOperation() {
-    operation.operandOne = undefined;
-    operation.operator = '';
+    operand = NaN;
+    binaryOperator = '';
 }
 function executeOperation(operator) {
     const result = input.innerHTML;
     const parsed = parseInt(result);
-    const hasNoOperand = isNaN(operation.operandOne);
+    const hasNoOperand = isNaN(operand);
+    let calculation = '';
+    isDisplayingResult = true;
 
     switch (operator) {
         case '+':
             if (hasNoOperand) {
-                operation.operandOne = parsed;
+                operand = parsed;
             } else {
-                operation.operandOne += parsed;
-                input.innerHTML = operation.operandOne.toString();
+                operand += parsed;
+                calculation = operand.toString();
             }
-            isDisplayingResult = true;
-
             break;
 
         case '-':
             if (hasNoOperand) {
-                operation.operandOne = parsed;
+                operand = parsed;
             } else {
-                operation.operandOne -= parsed;
-                input.innerHTML = operation.operandOne.toString();
+                operand -= parsed;
+                calculation = operand.toString();
             }
-            isDisplayingResult = true;
+
             break;
 
         case '←':
             // Remove the last digit of the number in the display.
             // If the last digit is deleted, set result to zero.
-            input.innerHTML = result.length > 1 ? result.substr(0, result.length - 1) : '0';
+            calculation = result.length > 1 ? result.substr(0, result.length - 1) : '0';
             break;
 
         case 'C':
             // Clear values in operand and sets result to
-            input.innerHTML = 0;
+            calculation = '0';
             clearOperation();
-            isDisplayingResult = true;
             break;
 
         case '÷':
             if (hasNoOperand) {
-                operation.operandOne = parsed;
+                operand = parsed;
             } else {
-                operation.operandOne /= parsed;
-                input.innerHTML = operation.operandOne.toString();
+                operand /= parsed;
+                calculation = operand.toString();
             }
-            isDisplayingResult = true;
             break;
         // TODO: Might want to handle '/' operator for keyboard input
 
         case '×':
             if (hasNoOperand) {
-                operation.operandOne = parsed;
+                operand = parsed;
             } else {
-                operation.operandOne *= parsed;
-                input.innerHTML = operation.operandOne.toString();
+                operand *= parsed;
+                calculation = operand.toString();
             }
-            isDisplayingResult = true;
             break;
 
         case '=':
             if (hasNoOperand) {
-                operation.operandOne = parsed;
+                operand = parsed;
             } else {
-                executeOperation(operation.operator);
+                calculation = executeOperation(binaryOperator);
+                console.log(`operator in recursion => ${binaryOperator}`);
                 clearOperation();
             }
-
             break;
 
         default:
-            console.error(`WARNING: Attempting to run invalid operation: ${operation}`);
+            console.error(`WARNING: Attempting to run invalid operation: ${operator}`);
+            isDisplayingResult = false;
             break;
     }
-    return result;
+    if (isDisplayingResult && calculation) {
+        render(calculation);
+    }
+    return calculation;
 }
 
 function isOperator(char) {
@@ -118,6 +119,7 @@ function isOperator(char) {
     }
     return false;
 }
+
 function getOperatorType(char) {
     if (char === '+' || char === '-' || char === '÷' || char === '×') {
         return 'Binary';
@@ -127,29 +129,31 @@ function getOperatorType(char) {
     }
     return 'Not An Operator';
 }
-function handleClick(e) {
-    console.log(this.innerHTML);
-    const keyClicked = this.innerHTML;
-    evaluateOperation(keyClicked);
-}
 
 function evaluateOperation(key) {
     const parsedInput = parseInt(key);
     if (!isNaN(parsedInput)) {
         // key is a number
         if (isDisplayingResult || input.innerHTML === '0') {
-            input.innerHTML = key;
+            render(key);
             isDisplayingResult = false;
         } else {
-            input.innerHTML += key;
+            render(input.innerHTML + key);
         }
     } else {
         // key is not a number
         if (key !== '←' && key !== 'C' && key !== '=') {
-            operation.operator = key;
+            binaryOperator = key;
         }
+        console.log(`Executing ${key}`);
         executeOperation(key);
     }
+}
+
+function handleClick(e) {
+    // console.log(this.innerHTML);
+    const keyClicked = this.innerHTML;
+    evaluateOperation(keyClicked);
 }
 
 function handleKeyDown(e) {

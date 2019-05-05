@@ -31,17 +31,21 @@ body {
   background-color: #355c7d;
   padding: 0;
   margin: 0;
+  color: papayawhip;
 }
 section {
-  margin-top: 20px;
-  width: 400px;
+  /* margin: 10px 0px; */
+  padding: 20px 0px;
+  min-width: 200px;
+  max-width: 400px;
+  width: 80%;
 }
 .calc {
   display: flex;
   width: 100%;
   flex-direction: column;
   background-color: var(--black);
-  color: papayawhip;
+  /* color: papayawhip; */
   margin: 0px;
   padding: 0px;
 }
@@ -57,15 +61,16 @@ section {
   opacity: 0;
 }
 .cursor {
-  margin: 3px;
   padding: 0px;
+  margin: 0px;
 }
 .display {
+  letter-spacing: 0px;
   min-height: 60px;
   background-color: var(--black);
   border-bottom: none;
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: flex-start;
   text-align: right;
   font-size: 2.5em;
@@ -97,17 +102,12 @@ section {
   border-radius: 0;
   width: 24.5%;
   font-size: 2em;
-  text-decoration: none;
   margin: 0;
-  padding: 12px 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: var(--green);
   font-family: 'Roboto Mono', cursive;
   cursor: pointer;
-  text-align: center;
   color: papayawhip;
+  height: 90px;
 }
 .key:hover {
   background-color: var(--green-hover);
@@ -115,9 +115,9 @@ section {
 .key:active {
   background-color: var(--green-active);
 }
-.key.clear {
+.clear {
   width: 49.7%;
 }
-.key.zero {
+.zero {
   width: 74.8%;
 }
