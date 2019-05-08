@@ -2,3 +2,13 @@ node_modules/
 .DS_Store
 haters
 Project5_NodeServer/node_modules/
+package.json
+package-lock.json
+
+*.prettierrc
+*.eslintrc
+*.exlintrc.json
+
+Project5_NodeServer/package-lock.json
+Project5_NodeServer/package.json
+
