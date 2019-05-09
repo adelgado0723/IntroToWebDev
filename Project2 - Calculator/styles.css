@@ -88,7 +88,7 @@ section {
   justify-content: space-between;
   align-items: stretch;
   display: flex;
-  width: 100%;
+  flex-basis: 100%;
 }
 .key.last {
   background-color: var(--dark-green);
@@ -103,7 +103,7 @@ section {
 .key {
   border: none;
   border-radius: 0;
-  width: 24.5%;
+  flex-basis: 24.5%;
   font-size: 2em;
   margin: 0;
   background: var(--green);
@@ -119,8 +119,8 @@ section {
   background-color: var(--green-active);
 }
 .clear {
-  width: 49.7%;
+  flex-basis: 49.7%;
 }
 .zero {
-  width: 74.8%;
+  flex-basis: 74.8%;
 }

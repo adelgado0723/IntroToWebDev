@@ -13,6 +13,22 @@ const complements = [
     "You've learned a lot of things, and that's pretty hard to do",
 ];
 
+const insults = [
+    'Your breath smells like armpit!',
+    'That shirt looks really bad on you.',
+    'You look fat today.',
+    "You can't do it. Give up.",
+    "You've gotten far in this course. What a waste of time!",
+    "You're programming! That stinks, go outside!",
+    "I'm really disappointed with you",
+    "You stole this code from the professor. You didn't make this",
+    "You've learned nothing, and struggled doing so!",
+];
+
+function getRandomInsult() {
+    const randomIndex = Math.floor(Math.random() * insults.length);
+    return insults[randomIndex];
+}
 function getRandomComplement() {
     const randomIndex = Math.floor(Math.random() * complements.length);
     return complements[randomIndex];
@@ -26,6 +42,10 @@ app.get('/', (req, res) => {
 
 app.get('/complement', (req, res) => {
     res.json({ complement: getRandomComplement() }).end();
+});
+
+app.get('/insult', (req, res) => {
+    res.json({ insult: getRandomInsult() }).end();
 });
 
 app.use('/public', express.static('./public'));
