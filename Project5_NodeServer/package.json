@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "popmotion": "^8.6.10"
   },
   "devDependencies": {
+    "cssnano": "^4.1.10",
     "eslint": "^5.16.0",
     "prettier": "^1.17.0"
   }
