@@ -2,6 +2,7 @@ const JOKE_URL = 'https://icanhazdadjoke.com/';
 const jokes = document.querySelector('.jokes');
 const addJokeButton = document.querySelector('.add-joke');
 const controls = document.querySelector('.controls');
+let isFirstJoke = true;
 
 function addJoke() {
     const promise = fetch(JOKE_URL, {
@@ -24,8 +25,13 @@ function addJoke() {
         .then(processedResponse => {
             // Second then is to wait on the JSON parsing
             console.log(processedResponse);
+            if (isFirstJoke) {
+                jokes.classList.add('display');
+                isFirstJoke = false;
+            }
             const li = document.createElement('li');
             li.innerHTML = processedResponse.joke;
+            li.classList.add('joke-text');
             jokes.appendChild(li);
         });
 }
